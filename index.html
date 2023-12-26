@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Click Counter</title>
+</head>
+<body>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         document.addEventListener('click', function () {
+            fetch('counter.php')
+               .then(response => response.json())
+               .then(data => {
+                  console.log('Clicks:', data.clicks, 'Visits:', data.visits);
+
+                  document.getElementById('clickCount').innerText = 'Clicks: ' + data.clicks;
+                  document.getElementById('visitCount').innerText = 'Visits: ' + data.visits;
+               });
+         });
+      });
+   </script>
+
+   <p id="clickCount">Clicks: 0</p>
+   <p id="visitCount">Visits: 0</p>
+
+</body>
+</html>
